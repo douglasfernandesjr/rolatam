@@ -1,4 +1,4 @@
-# Rolatam Temp WIKI
+# RO LATAM Temp WIKI
 
 Esta [wiki](https://github.com/douglasfernandesjr/rolatam/wiki) é dedicada a organizar um rascunho de guias e informações sobre [Ragnarok Online - Servidor Latam](https://www.gnjoylatam.com/pt).
 
