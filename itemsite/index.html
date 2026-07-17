@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itens Úteis Ragnarok</title>
+    <script>
+        function filterByText(event) {
+            const searchTerm = event.target.value.trim().toLowerCase();
+            const listItems = document.querySelectorAll("ul#list li");
+
+            listItems.forEach(function (item) {
+                item.style.display = 'revert';
+
+                if (!item.innerText.toLowerCase().includes(searchTerm)) {
+                    item.style.display = 'none';
+                }
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <input type="search" placeholder="Type here to filter the list" oninput="filterByText(event)">
+
+    <ul id="list">
+        <li>
+            <img src="http://static.divine-pride.net/images/items/item/1034.png" alt="1034.png">
+            <a rel="nofollow" class="external text" href="http://www.divine-pride.net/database/item/1034/">Cabelo Azul</a>
+        </li>
+        <li>Cat</li>
+        <li>Hamster</li>
+        <li>Fish</li>
+        <li>Chicken</li>
+        <li>Pig</li>
+        <li>Cow</li>
+        <li>Giraffe</li>
+        <li>Elephant</li>
+        <li>Tiger</li>
+    </ul>
+</body>
+
+</html>

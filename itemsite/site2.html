@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RO Database</title>
+    <style>
+        :root {
+            --bg: #efe3c8;
+            --panel: #fff8ea;
+            --border: #9b7a4f;
+            --gold: #c9a15a;
+            --brown: #5b3516;
+            --text: #352516;
+            --hover: #f1dfb7;
+            --shadow: rgba(0, 0, 0, .15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background:
+                linear-gradient(rgba(239, 227, 200, .92),
+                    rgba(239, 227, 200, .92));
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: auto;
+            padding: 16px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            color: var(--brown);
+            font-size: 2rem;
+        }
+
+        .header p {
+            color: #6b4e2b;
+            margin-top: 6px;
+        }
+
+        /* Campo busca */
+
+        .search-box {
+            margin-bottom: 16px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 14px;
+            font-size: 1rem;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            background: white;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: var(--gold);
+        }
+
+        /* Layout principal */
+
+        .content {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 20px;
+        }
+
+        /* Painéis */
+
+        .item-list,
+        .item-info {
+            background: var(--panel);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        /* Lista */
+
+        .item-list ul {
+            list-style: none;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .item-list li {
+            padding: 14px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid #e4d2aa;
+            transition: .2s;
+        }
+
+        .item-list li:hover {
+            background: var(--hover);
+        }
+
+        .item-list li.active {
+            background: var(--gold);
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Informações */
+
+        .item-info {
+            padding: 24px;
+        }
+
+        .item-info h2 {
+            color: var(--brown);
+            margin-bottom: 20px;
+        }
+
+        .info-block {
+            margin-bottom: 24px;
+        }
+
+        .info-block h3 {
+            color: var(--brown);
+            margin-bottom: 8px;
+        }
+
+        .info-block ul {
+            list-style: none;
+        }
+
+        .info-block li {
+            margin-bottom: 8px;
+        }
+
+        .info-block a {
+            color: #1764d7;
+            text-decoration: none;
+        }
+
+        .info-block a:hover {
+            text-decoration: underline;
+        }
+
+        /* Scroll custom */
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 10px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 768px) {
+
+            .container {
+                padding: 12px;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .item-list {
+                order: 1;
+            }
+
+            .item-info {
+                order: 2;
+                padding: 18px;
+            }
+
+            .item-list ul {
+                max-height: 300px;
+            }
+
+            .item-list li {
+                padding: 16px;
+                font-size: 1rem;
+            }
+
+            .search-box input {
+                padding: 16px;
+                font-size: 16px;
+            }
+        }
+
+        /* TELAS GRANDES */
+
+        @media (min-width: 1400px) {
+
+            .content {
+                grid-template-columns: 380px 1fr;
+            }
+
+            .item-info {
+                padding: 32px;
+            }
+        }
+    </style>
+    <script>
+
+
+        function filterByText(event) {
+
+            const items = document.querySelectorAll("#items li");
+
+            const search = event.target.value.trim().toLowerCase();
+
+
+            items.forEach(item => {
+
+                const itemName = item.textContent.toLowerCase();
+
+                item.style.display = itemName.includes(search) ? "block" : "none";
+
+            });
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header class="header">
+            <h1>Ragnarok Item Database</h1>
+            <p>Pesquise itens e veja informações de uso</p>
+        </header>
+
+        <div class="search-box">
+            <input type="text" id="search" placeholder="Digite o nome do item..." oninput="filterByText(event)">
+        </div>
+
+        <div class="content">
+
+            <aside class="item-list">
+                <ul id="items">
+                    <li data-item="Pena Brilhante">Pena Brilhante</li>
+                    <li data-item="Casco de Besouro">Casco de Besouro</li>
+                    <li data-item="Galho Seco">Galho Seco</li>
+                    <li data-item="Erva Azul">Erva Azul</li>
+                    <li data-item="Cristal Azul">Cristal Azul</li>
+                </ul>
+            </aside>
+
+            <section class="item-info">
+
+                <h2>Pena Brilhante</h2>
+
+                <div class="info-block">
+                    <h3>Usado em</h3>
+
+                    <ul>
+                        <li>
+                            <a>Quest do Bardo</a>
+                        </li>
+                        <li>#Equipamento X</a></li>
+                        <li><a href="#">Refinoa></li>
+                    </ul>
+                </div>
+
+                <div class="info-block">
+                    <h3>Dropado por</h3>
+
+                    <ul>
+                        <li>
+                            <a> Peco Peco</a>
+                        </li>
+                        <li><a href="#">Grand Peco< </ul>
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+    <scriptjsscript>
+
+</body>
+
+</html>
