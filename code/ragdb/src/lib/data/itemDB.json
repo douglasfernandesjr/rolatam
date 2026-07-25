@@ -1,0 +1,40 @@
+[
+    {
+        "id": 7939,
+        "name": "Galho Antigo",
+        "referenceIds": [
+            101
+        ],
+        "details": {
+            "normalDrop": true,
+            "questDrop": false,
+            "buyInNPC": false
+        }
+    },
+    {
+        "id": 7030,
+        "name": "Garra de Lobo do Deserto",
+        "referenceIds": [
+            101,
+            901
+        ],
+        "details": {
+            "normalDrop": true,
+            "questDrop": false,
+            "buyInNPC": false
+        }
+    }
+    ,
+    {
+        "id": 1034,
+        "name": "Cabelo Azul",
+        "referenceIds": [
+            101
+        ],
+        "details": {
+            "normalDrop": true,
+            "questDrop": false,
+            "buyInNPC": false
+        }
+    }
+]

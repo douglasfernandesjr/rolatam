@@ -15,7 +15,7 @@ To recreate this project with the same configuration:
 
 ```sh
 # recreate this project
-npx sv@0.16.3 create --template demo --types ts --add prettier eslint --install npm utildb
+npx sv@0.16.3 create --template minimal --types ts --install npm ragdb
 ```
 
 ## Developing
@@ -40,3 +40,8 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+
+
+Important Links
+
+https://khromov.se/the-missing-guide-to-understanding-adapter-static-in-sveltekit/
