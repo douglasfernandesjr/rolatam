@@ -2,6 +2,14 @@
     let name = "Ragnarok Util Database";
 
     import { load } from "$lib/data/load.js";
+
+    let ctrl =  $state("Pena Brilhante");
+
+    function increment(value:string) {
+		ctrl = value;
+        console.log("log")
+	}
+
 </script>
 
 <div class="container">
@@ -11,14 +19,14 @@
     </header>
 
     <div class="search-box">
-        <input type="text" id="search" placeholder="Digite o nome do item..." />
+        <input type="text" id="search" placeholder="Digite o nome do item..."  />
     </div>
 
     <div class="content">
         <aside class="item-list">
             <ul id="items">
                 {#each load.itemDB as { id, name }, index}
-                    <li data-item={index + 1}>{id} {name}</li>
+                    <li data-item={index + 1} onclick={()=>increment(name)}>{id} {name}</li>
                 {/each}
 
                 <li data-item="Casco de Besouro">Casco de Besouro</li>
@@ -29,7 +37,7 @@
         </aside>
 
         <section class="item-info">
-            <h2>Pena Brilhante</h2>
+            <h2>{ctrl}</h2>
             <div class="info-block">
                 <h3>Usado em</h3>
 
