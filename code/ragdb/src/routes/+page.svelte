@@ -1,18 +1,17 @@
 <script lang="ts">
-    let searchValue = $state("");
-
+    import type { RagnarokItem } from "$lib/services/RagnarokItem";
     import { load } from "$lib/services/load.js";
+    import ItemDisplay from "$lib/components/ItemDisplay.svelte";
 
-    let firstItem = load[0];
-
+    let searchValue = $state("");
+    let selectedItem = $state(load[0]);
     let ctrl = $state("Pena Brilhante");
 
-    function selectItem(value: string) {
-        ctrl = value;
+    function selectItem(value: RagnarokItem) {
+        selectedItem = value;
     }
 
     function executeSearch() {}
-
 </script>
 
 <div class="container">
@@ -34,10 +33,10 @@
     <div class="content">
         <aside class="item-list">
             <ul id="items">
-                {#each load as { id, name }, index}
+                {#each load as currentItem, index}
                     <li data-item={index + 1}>
-                        <button onclick={() => selectItem(name)}>
-                            {id} {name}</button
+                        <button onclick={() => selectItem(currentItem)}>
+                            {currentItem.id} {currentItem.name}</button
                         >
                     </li>
                 {/each}
@@ -49,30 +48,6 @@
             </ul>
         </aside>
 
-        <section class="item-info">
-            <h2>{ctrl}</h2>
-            <div class="info-block">
-                <h3>Usado em</h3>
-
-                <ul>
-                    <li>
-                        <a>Quest do Bardo</a>
-                    </li>
-                    <li>Equipamento X</li>
-                    <li><a href="#">Refino</a></li>
-                </ul>
-            </div>
-
-            <div class="info-block">
-                <h3>Dropado por</h3>
-
-                <ul>
-                    <li>
-                        <a> Peco Peco</a>
-                    </li>
-                    <li><a href="#">Grand Peco</a></li>
-                </ul>
-            </div>
-        </section>
+        <ItemDisplay value={selectedItem}></ItemDisplay>
     </div>
 </div>
