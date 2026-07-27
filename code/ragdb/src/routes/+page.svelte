@@ -1,32 +1,45 @@
 <script lang="ts">
-    let name = "Ragnarok Util Database";
+    let searchValue = $state("");
 
-    import { load } from "$lib/data/load.js";
+    import { load } from "$lib/services/load.js";
 
-    let ctrl =  $state("Pena Brilhante");
+    let firstItem = load[0];
 
-    function increment(value:string) {
-		ctrl = value;
-        console.log("log")
-	}
+    let ctrl = $state("Pena Brilhante");
+
+    function selectItem(value: string) {
+        ctrl = value;
+    }
+
+    function executeSearch() {}
 
 </script>
 
 <div class="container">
     <header class="header">
-        <h1>{name}</h1>
+        <h1>Ragnarok Util Database</h1>
         <p>Pesquise itens e veja informações de uso</p>
     </header>
 
     <div class="search-box">
-        <input type="text" id="search" placeholder="Digite o nome do item..."  />
+        <input
+            type="text"
+            id="search"
+            bind:value={searchValue}
+            placeholder="Digite o nome do item..."
+            onchange={() => executeSearch()}
+        />
     </div>
 
     <div class="content">
         <aside class="item-list">
             <ul id="items">
-                {#each load.itemDB as { id, name }, index}
-                    <li data-item={index + 1} onclick={()=>increment(name)}>{id} {name}</li>
+                {#each load as { id, name }, index}
+                    <li data-item={index + 1}>
+                        <button onclick={() => selectItem(name)}>
+                            {id} {name}</button
+                        >
+                    </li>
                 {/each}
 
                 <li data-item="Casco de Besouro">Casco de Besouro</li>
